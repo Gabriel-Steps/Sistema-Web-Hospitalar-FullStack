@@ -1,0 +1,106 @@
+Descrição do Sistema de Hospital
+O sistema seria usado por médicos, enfermeiros, secretários e administradores do hospital para gerenciar os pacientes, os agendamentos, os prontuários médicos e as internações. A aplicação poderia ser dividida em várias áreas de gestão, como cadastro de pacientes, agendamentos de consultas, registro de prontuários, controle de leitos, controle de estoque de medicamentos, etc.
+
+Principais Funcionalidades
+
+1. Cadastro de Pacientes
+Descrição: Os administradores ou secretários podem cadastrar os pacientes, incluindo informações como nome, idade, endereço, contatos de emergência, histórico médico e alergias.
+Tabela no MySQL:
+pacientes: id, nome, telefone, cpf, email,  senha.
+
+Funcionalidades:
+Adicionar, editar e excluir pacientes
+Pesquisar pacientes por nome, idade ou número de identificação
+Visualizar histórico médico completo
+
+2. Agendamento de Consultas
+Descrição: O sistema permite que os pacientes agendem consultas com médicos, além de visualizar horários disponíveis. As consultas podem ser com especialistas de várias áreas (cardiologia, pediatria, ortopedia, etc.).
+Tabela no MySQL:
+consultas: id, id_paciente, id_medico, data_hora, motivo_consulta, status (agendada, confirmada, cancelada), etc.
+Funcionalidades:
+Agendar novas consultas
+Consultar disponibilidade de médicos
+Confirmar ou cancelar consultas
+Enviar lembretes de consulta para pacientes via email ou SMS (integração opcional)
+
+3. Prontuários Médicos
+Descrição: O médico pode registrar diagnósticos, tratamentos, prescrições e evoluções dos pacientes nas consultas realizadas.
+Tabela no MySQL:
+prontuarios: id, id_consulta, id_medico, diagnostico, receita, observacoes, etc.
+Funcionalidades:
+Inserir diagnósticos e tratamentos
+Prescrever medicamentos e tratamentos
+Visualizar histórico de evolução do paciente
+
+4. Controle de Leitos
+Descrição: Gerenciamento de internações, com controle da ocupação de leitos no hospital. Isso pode incluir informações como o paciente internado, a enfermaria, o tipo de internação (emergencial ou programada), e a data de entrada e saída.
+Tabela no MySQL:
+internacoes: id, id_paciente, id_leito, data_entrada, data_saida, tipo_internacao, status (em internamento, alta concedida), etc.
+Funcionalidades:
+Atribuir pacientes aos leitos disponíveis
+Visualizar a ocupação dos leitos e as datas de alta
+Controlar o status da internação
+Histórico de internações
+
+5. Receitas e Prescrições de Medicamentos
+Descrição: Os médicos podem prescrever medicamentos para os pacientes. O sistema deve permitir que os médicos cadastrem receitas com os medicamentos prescritos, dosagem e duração.
+Tabela no MySQL:
+prescricoes: id, id_prontuario, medicamento, dosagem, frequencia, duracao, etc.
+Funcionalidades:
+Registrar prescrição de medicamentos
+Visualizar medicamentos prescritos
+Alterar ou cancelar prescrições
+
+6. Controle de Estoque de Medicamentos
+Descrição: Um controle de estoque simples para registrar os medicamentos disponíveis no hospital e o histórico de entradas e saídas.
+Tabela no MySQL:
+estoque: id, medicamento, quantidade_em_estoque, data_entrada, data_saida, fornecedor, etc.
+Funcionalidades:
+Registrar entrada e saída de medicamentos
+Verificar quantidade disponível de medicamentos
+Alertas para medicamentos com baixo estoque
+
+7. Gestão de Funcionários (Médicos, Enfermeiros, etc.)
+Descrição: Gerenciamento de funcionários do hospital (médicos, enfermeiros, administrativos, etc.), com controle de horários, escalas de trabalho e atribuição de funções.
+Tabela no MySQL:
+funcionarios: id, nome, especialidade, email, telefone
+Funcionalidades:
+Cadastro de médicos e outros funcionários
+Visualizar escalas de trabalho
+Atribuição de pacientes e consultas aos médicos
+8. Relatórios e Estatísticas
+Descrição: Geração de relatórios e gráficos sobre o número de pacientes atendidos, leitos ocupados, medicamentos consumidos, consultas realizadas, entre outros.
+Funcionalidades:
+Gerar relatórios de consultas, internações, medicamentos, etc.
+Visualizar gráficos de ocupação de leitos, número de atendimentos por especialidade, etc.
+Arquitetura do Sistema
+Frontend: React
+Componentes principais:
+Dashboard: Visão geral do hospital (ocupação de leitos, quantidade de pacientes, consultas agendadas, etc.).
+Cadastro de Pacientes: Tela para adicionar e editar informações dos pacientes.
+Agendamentos de Consultas: Interface para agendar e visualizar consultas.
+Prontuários Médicos: Área onde médicos podem registrar e visualizar o histórico médico dos pacientes.
+Controle de Leitos: Visualização da ocupação dos leitos e dados de internação.
+Estoque de Medicamentos: Tela para gerenciar o estoque de medicamentos.
+Relatórios e Estatísticas: Geração e visualização de gráficos e relatórios sobre o hospital.
+Bibliotecas recomendadas:
+React Router para navegação entre páginas
+Axios ou Fetch API para integração com o backend
+React Hook Form ou Formik para formulários
+Chart.js ou Recharts para gráficos e relatórios
+React-Bootstrap ou Material-UI para componentes UI
+Backend: Node.js + Express + MySQL
+Endpoints principais:
+/pacientes: CRUD para pacientes
+/consultas: CRUD para consultas e agendamentos
+/prontuarios: CRUD para prontuários médicos
+/internacoes: CRUD para internações
+/prescricoes: CRUD para medicamentos prescritos
+/estoque: CRUD para controle de estoque
+/funcionarios: CRUD para cadastro de funcionários
+Considerações Adicionais
+Autenticação e Autorização: Utilize JWT (JSON Web Token) para autenticação e controle de permissões (diferentes níveis de acesso para médicos, administradores e outros funcionários).
+Validação de Dados: Validação tanto no frontend (com React) quanto no backend (com Node.js/Express) para garantir que os dados sejam consistentes e válidos.
+Segurança: Proteja os dados dos pacientes, médicos e do hospital com medidas de segurança adequadas, como criptografia de senhas e autenticação de dois fatores (2FA) se necessário.
+Conclusão
+Esse projeto de sistema hospitalar não só é uma excelente oportunidade para praticar React e MySQL, mas também para criar uma aplicação que possui múltiplos componentes e interações entre eles. Além disso, você poderá incorporar funcionalidades avançadas de autenticação, relatórios, gráficos e muito mais. Com isso, você terá um portfólio robusto e um entendimento profundo sobre como criar sistemas de gestão complexos.
